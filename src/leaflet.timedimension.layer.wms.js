@@ -291,6 +291,9 @@ L.TimeDimension.Layer.WMS = L.TimeDimension.Layer.extend({
     _parseTimeDimensionFromCapabilities: function(xml) {
         var layers = xml.querySelectorAll('Layer[queryable="1"]');
         var layerName = this._baseLayer.wmsParams.layers;
+        if (Array.isArray(this._baseLayer.wmsParams.layers)){
+            layerName = this._baseLayer.wmsParams.layers[0] || null;
+        }
         var layer = null;
         var times = null;
 
